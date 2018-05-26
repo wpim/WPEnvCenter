@@ -7,6 +7,13 @@
 
 #import "WPEnvCenter.h"
 
+@interface WPEnvCenter()
+@property (nonatomic, strong) WPEnvConfig *debugConfig;
+@property (nonatomic, strong) WPEnvConfig *releaseConfig;
+
+@property (nonatomic, assign) WPEnvMode mode;
+@end
+
 @implementation WPEnvCenter
 #pragma mark - 单例
 static WPEnvCenter *_instance;
@@ -48,5 +55,22 @@ static WPEnvCenter *_instance;
         _releaseConfig = config;
     }
     return _releaseConfig;
+}
+
+- (WPEnvConfig *)currentConfig {
+#if DEBUG
+    switch (self.mode) {
+        case WPEnvModeDebug:
+            return self.debugConfig;
+            break;
+        case WPEnvModeRelease:
+            return self.releaseConfig;
+            
+        default:
+            break;
+    }
+#else
+    return self.releaseConfig;
+#endif
 }
 @end

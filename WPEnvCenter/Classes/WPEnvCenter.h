@@ -8,14 +8,15 @@
 #import <Foundation/Foundation.h>
 #import "WPEnvConfig.h"
 
-@interface WPEnvCenter : NSObject{
-    @private
-    WPEnvConfig *_debugConfig;
-    WPEnvConfig *_releaseConfig;
-}
+typedef NS_ENUM(NSInteger, WPEnvMode) {
+    WPEnvModeDebug,
+    WPEnvModeRelease
+};
+
+@interface WPEnvCenter : NSObject
 
 + (instancetype)sharedCenter;
 
-- (WPEnvConfig *)debugConfig;
-- (WPEnvConfig *)releaseConfig;
+- (WPEnvConfig *)currentConfig;
+- (void)switchMode:(WPEnvMode)mode;
 @end

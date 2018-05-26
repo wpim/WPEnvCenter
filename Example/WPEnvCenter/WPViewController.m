@@ -21,7 +21,7 @@
     self.view.backgroundColor = [UIColor blueColor];
     WPEnvCenter *center = [WPEnvCenter sharedCenter];
     
-    NSLog(@"%@", center.debugConfig.baseApiUrl);
+    NSLog(@"%@", center.currentConfig.baseApiUrl);
 }
 
 - (void)didReceiveMemoryWarning
