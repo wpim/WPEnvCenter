@@ -73,4 +73,8 @@ static WPEnvCenter *_instance;
     return self.releaseConfig;
 #endif
 }
+
+- (void)switchMode:(WPEnvMode)mode {
+    self.mode = mode;
+}
 @end
